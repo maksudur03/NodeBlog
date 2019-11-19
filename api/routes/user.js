@@ -19,7 +19,7 @@ router.get('/',(req,res,next) => {
       //           message: 'No entries found'
       //       });
       //   }
-    })
+      })
     .catch(err => {
       console.log(err);
       res.status(500).json({
@@ -39,7 +39,10 @@ router.post('/signup',(req,res,next) => {
       } else {
     const user = new User({
         _id: new mongoose.Types.ObjectId(),
+        name : req.body.name,
         email: req.body.email,
+        age : req.body.age,
+        phoneNo : req.body.phoneNo,
         password:md5(req.body.password)
     });
     user
@@ -64,11 +67,9 @@ router.post("/login", (req, res, next) => {
     User.find({ email: req.body.email })
       .exec()
       .then(user => {
-        console.log(md5(req.body.password));
-        console.log(user[0].password);
         if (user.length < 1) {
           return res.status(401).json({
-            message: "Auth failed"
+            message: "Mail not found"
           });
           
         }
@@ -78,6 +79,7 @@ router.post("/login", (req, res, next) => {
             });
           }
           if (md5(req.body.password) === user[0].password) {
+            //generating token
             const token = jwt.sign(
               {
                 email: user[0].email,
@@ -87,7 +89,9 @@ router.post("/login", (req, res, next) => {
             );
             return res.status(200).json({
               message: "Auth successful",
-              token: token
+              token: token,
+              userId : user._id,
+              userName : user.name
             });
          }
          res.status(401).json({
@@ -102,7 +106,25 @@ router.post("/login", (req, res, next) => {
     });
 });
 
-
+router.get('/:userId',(req, res, next) => {
+    const id = req.params.userId;
+   User.findById(id)
+   .exec()
+   .then(doc => {
+     console.log(doc);
+     if(doc){
+     res.status(200).json(doc);
+     }else{
+       res.status(404).json({
+         message : 'No vaild data'
+       });
+     }
+   })
+   .catch(error => {
+     console.log(error);
+     res.status(500).json({error:error});
+   });
+ });
 
 router.delete("/:userId", (req, res, next) => {
     User.remove({ _id: req.params.userId })

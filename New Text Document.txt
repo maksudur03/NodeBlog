@@ -1,0 +1,15 @@
+signup
+{
+	"name":"test",
+	"email": "test3@test.com",
+	"password" : "12345",
+	"age":"16",
+	"phoneNo":"123"
+	
+}
+"postId":"1",
+    "content":"webtech final at 2pm",
+    "userId" : ,
+    "userName" : "test",
+    "rating" : "0",
+    "ratingCount" : "0"

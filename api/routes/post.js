@@ -1,8 +1,26 @@
 const express = require('express');
 const router = express.Router();
 const mongoose =  require('mongoose');
+const checkAuth = require('../middleware/check-auth');
+
 
 const Post = require('../models/post');
+
+router.get('/mypost/:userId',(req, res, next) => {
+  Post.find({userId : req.params.userId})
+  .exec()
+  .then(docs => {
+    console.log(docs);
+    res.status(200).json(docs);
+  })
+  .catch( error => {
+    console.log(error);
+    res.status(500).json({
+      error : error
+    });
+    
+  });
+});
 
 router.get('/',(req,res,next) => {
     Post.find()
@@ -23,15 +41,19 @@ router.get('/',(req,res,next) => {
 router.post('/',(req,res,next) => {
     const post = new Post({
         _id: new mongoose.Types.ObjectId(),
-        postId:req.body.postId,
-        content:req.body.content
+        heading:req.body.heading,
+        content:req.body.content,
+        userId : req.body.userId,
+        userName : req.body.userName,
+        rating : 0,
+        ratingCount : 0
     });
     post
     .save()
     .then(result => {
         console.log(result);
     res.status(200).json({
-        message:'Handling POST requests to /Posts',
+        message:'Posted',
         createdPost:result
     });
   })
