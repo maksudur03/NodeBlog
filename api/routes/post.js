@@ -123,6 +123,20 @@ router.delete('/:postId',(req,res,next) => {
     });
 });
 
-
+router.get('/mypost/:userId',(req, res, next) => {
+  Post.find({userId : req.params.userId})
+  .exec()
+  .then(docs => {
+    console.log(docs);
+    res.status(200).json(docs);
+  })
+  .catch( error => {
+    console.log(error);
+    res.status(500).json({
+      error : error
+    });
+    
+  });
+});
 
 module.exports = router;

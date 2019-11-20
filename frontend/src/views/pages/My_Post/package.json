@@ -1,0 +1,7 @@
+{
+    "name": "My_Post",
+    "version": "0.0.0",
+    "private": true,
+    "main": "./My_Post.js"
+  }
+  

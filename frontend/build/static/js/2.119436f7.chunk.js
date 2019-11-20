@@ -1,0 +1,2 @@
+(this.webpackJsonpbackend=this.webpackJsonpbackend||[]).push([[2],{480:function(e,t,a){"use strict";a.r(t);var n=a(25),c=a(26),i=a(28),s=a(27),r=a(29),u=a(1),b=a.n(u),o=(a(37),function(e){function t(e){var a;return Object(n.a)(this,t),(a=Object(i.a)(this,Object(s.a)(t).call(this,e))).state={isLoading:!0},a}return Object(r.a)(t,e),Object(c.a)(t,[{key:"render",value:function(){return b.a.createElement("div",{className:"animated fadeIn"})}}]),t}(u.Component));t.default=o}}]);
+//# sourceMappingURL=2.119436f7.chunk.js.map
