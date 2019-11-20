@@ -7,9 +7,19 @@ signup
 	"phoneNo":"123"
 	
 }
-"postId":"1",
+ {
+        "_id": "5dd3b608c7e6604964be40b0",
+        "name": "test6",
+        "email": "test36@test.com",
+        "age": "16",
+        "phoneNo": "123",
+        "password": "827ccb0eea8a706c4c34a16891f84e7b",
+        "__v": 0
+    }
+
+    "heading":"1",
     "content":"webtech final at 2pm",
-    "userId" : ,
+    "userId" :"5dd3b57ac7e6604964be40af" ,
     "userName" : "test",
     "rating" : "0",
     "ratingCount" : "0"

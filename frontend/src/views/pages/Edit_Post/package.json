@@ -1,0 +1,7 @@
+{
+    "name": "Edit_Post",
+    "version": "0.0.0",
+    "private": true,
+    "main": "./Edit_Post.js"
+  }
+  

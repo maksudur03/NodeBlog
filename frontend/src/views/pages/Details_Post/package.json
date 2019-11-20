@@ -1,0 +1,6 @@
+{
+    "name": "Details_Post",
+    "version": "0.0.0",
+    "private": true,
+    "main": "./Details_Post.js"
+  }
